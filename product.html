@@ -10,7 +10,64 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/images/logo.png">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Modern enhancements */
+    :root {
+      --color-gold: #D4AF37;
+      --color-gold-light: #F4D03F;
+      --color-dark: #1A1A1A;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .product-detail-image img {
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+    }
+    .product-detail-image img:hover {
+      transform: scale(1.02);
+    }
+    .btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: var(--transition);
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 0%; height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+    .btn:hover::before {
+      width: 100%;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f9f9f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dcdcdc;
+      border-radius: 5px;
+      border: 2px solid #f9f9f9;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gold);
+    }
+  </style>
 </head>
 <body>
 
