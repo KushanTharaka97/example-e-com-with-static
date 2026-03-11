@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Gold Lanka</title>
+  <meta name="description" content="View details for handcrafted Sri Lankan gold jewelry from Gold Lanka.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ── Header ── -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+
+      <div class="logo">
+        <a href="index.html" aria-label="Gold Lanka — Home">GOLD LANKA</a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle"
+              aria-controls="primary-nav"
+              aria-expanded="false"
+              aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Collection</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="wishlist.html" class="wishlist-icon" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span id="wishlist-count">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ── Main Content ── -->
+  <main id="main-content" class="container">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb"
+         style="padding-top: var(--space-8); margin-bottom: var(--space-2);">
+      <ol style="display: flex; gap: var(--space-2); font-size: var(--text-sm);
+                 color: var(--color-muted); flex-wrap: wrap;">
+        <li><a href="index.html" style="color: var(--color-muted);">Home</a></li>
+        <li aria-hidden="true" style="opacity: 0.4;">/</li>
+        <li><a href="catalog.html" style="color: var(--color-muted);">Collection</a></li>
+        <li aria-hidden="true" style="opacity: 0.4;">/</li>
+        <li id="breadcrumb-product" aria-current="page"
+            style="color: var(--color-text-secondary);">Product</li>
+      </ol>
+    </nav>
+
+    <!-- Product detail — populated by JS -->
+    <div id="product-detail" class="product-detail">
+      <p style="grid-column: 1 / -1; color: var(--color-muted);">
+        Loading product details…
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 Gold Lanka. All rights reserved.</p>
+        <p><a href="catalog.html">← Back to Collection</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      if (!id) {
+        window.location.href = 'catalog.html';
+        return;
+      }
+
+      try {
+        const response = await fetch('./data/catalog.json');
+        const products = await response.json();
+        const product  = products.find(p => p.id === id);
+
+        const container = document.getElementById('product-detail');
+
+        if (!product) {
+          container.innerHTML = `
+            <p style="grid-column:1/-1; color: var(--color-muted);">
+              Product not found.
+              <a href="catalog.html">Return to collection →</a>
+            </p>`;
+          return;
+        }
+
+        // Update page metadata
+        document.title = `${product.name} | Gold Lanka`;
+        const crumb = document.getElementById('breadcrumb-product');
+        if (crumb) crumb.textContent = product.name;
+
+        const isWishlisted = Wishlist.has(product.id);
+
+        container.innerHTML = `
+          <div class="product-detail-image">
+            <img src="${product.image}" alt="${product.name}"
+                 width="800" height="800">
+          </div>
+          <div class="product-detail-info">
+            <span class="tag"
+                  style="margin-bottom: var(--space-5); display: inline-block;">
+              ${product.category}
+            </span>
+            <h1 class="product-detail-title">${product.name}</h1>
+            <p class="product-detail-price">${formatCurrency(product.price_lkr)}</p>
+
+            <div class="product-detail-specs">
+              <div class="spec-item">
+                <strong>Karat</strong>
+                <span>${product.karat}</span>
+              </div>
+              <div class="spec-item">
+                <strong>Weight</strong>
+                <span>${product.weight_g}g</span>
+              </div>
+              <div class="spec-item">
+                <strong>Category</strong>
+                <span>${product.category}</span>
+              </div>
+              <div class="spec-item">
+                <strong>Availability</strong>
+                <span style="color: #6ecf8a;">In Stock</span>
+              </div>
+            </div>
+
+            <p class="product-detail-desc">${product.description}</p>
+
+            <div class="product-detail-actions">
+              <button class="btn btn-primary"
+                      onclick="alert('Contact us to purchase:\\n+94 77 123 4567')">
+                Inquire Now
+              </button>
+              <button class="btn wishlist-btn ${isWishlisted ? 'active' : ''}"
+                      id="detail-wishlist-btn"
+                      data-id="${product.id}"
+                      aria-label="${isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}"
+                      onclick="Wishlist.toggle('${product.id}'); Wishlist.updateUI();">
+                ${isWishlisted ? '❤️ In Wishlist' : '🤍 Wishlist'}
+              </button>
+            </div>
+          </div>
+        `;
+
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  </script>
+</body>
+</html>
