@@ -8,7 +8,7 @@ window.catalogData = [
     "weight_g": 24.5,
     "karat": "22K",
     "price_lkr": 450000,
-    "image": "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=22K+Gold+Kandyan+Necklace",
     "description": "Traditional Kandyan style necklace featuring intricate filigree work and a stunning centerpiece.",
     "featured": true
   },
@@ -34,7 +34,7 @@ window.catalogData = [
     "weight_g": 8.0,
     "karat": "24K",
     "price_lkr": 185000,
-    "image": "https://images.unsplash.com/photo-1610375461757-58936e7a175f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=24K+Gold+Sovereign+Coin",
     "description": "Pure 24K gold coin, perfect for investment and auspicious occasions.",
     "featured": false
   },
@@ -99,7 +99,7 @@ window.catalogData = [
     "weight_g": 5.0,
     "karat": "18K",
     "price_lkr": 450000,
-    "image": "https://images.unsplash.com/photo-1598560977723-0130f898a3e7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=Sapphire+Diamond+Ring",
     "description": "Captivate the room with this stunning oval sapphire ring, encircled by a halo of sparkling diamonds.",
     "featured": true
   },
@@ -112,7 +112,7 @@ window.catalogData = [
     "weight_g": 3.0,
     "karat": "18K",
     "price_lkr": 67500,
-    "image": "https://images.unsplash.com/photo-1635767798638-3e2523422204?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=Rose+Gold+Hoops",
     "description": "Twist up your style with these chic rose gold hoops, featuring a textured rope design.",
     "featured": false
   },
@@ -138,7 +138,7 @@ window.catalogData = [
     "weight_g": 4.0,
     "karat": "18K",
     "price_lkr": 157500,
-    "image": "https://images.unsplash.com/photo-1589128087265-4229598f8253?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=Emerald+Geometric+Studs",
     "description": "Channel vintage glamour with these geometric emerald studs in a bold yellow gold bezel setting.",
     "featured": true
   },
@@ -151,7 +151,7 @@ window.catalogData = [
     "weight_g": 6.0,
     "karat": "Titanium",
     "price_lkr": 40500,
-    "image": "https://images.unsplash.com/photo-1622398925373-3f6c69564632?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=Titanium+Signet+Ring",
     "description": "Modern and masculine, this durable titanium signet ring features a sleek brushed finish.",
     "featured": false
   },
@@ -203,7 +203,7 @@ window.catalogData = [
     "weight_g": 8.0,
     "karat": "Silver",
     "price_lkr": 51000,
-    "image": "https://images.unsplash.com/photo-1596944924616-b699b2756ccb?auto=format&fit=crop&w=800&q=80",
+    "image": "https://placehold.co/800x600/f5f5f5/1a1a1a?text=Black+Onyx+Cufflinks",
     "description": "Add sophistication to formal wear with these sterling silver cufflinks showcasing cushion-cut black onyx.",
     "featured": false
   }
